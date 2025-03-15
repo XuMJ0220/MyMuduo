@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/xumj/项目/MyMuduo/base/Logging.cc
+Logging.h
+/home/xumj/项目/MyMuduo/base/Logging.h
+Timestamp.h
+/home/xumj/项目/MyMuduo/base/Timestamp.h
+iostream
+-
+
+/home/xumj/项目/MyMuduo/base/Logging.h
+string
+-
+noncopyable.h
+/home/xumj/项目/MyMuduo/base/noncopyable.h
+
+/home/xumj/项目/MyMuduo/base/Timestamp.cc
+Timestamp.h
+/home/xumj/项目/MyMuduo/base/Timestamp.h
+sstream
+-
+iomanip
+-
+
+/home/xumj/项目/MyMuduo/base/Timestamp.h
+ctime
+-
+chrono
+-
+string
+-
+
+/home/xumj/项目/MyMuduo/base/noncopyable.h
+

@@ -18,24 +18,24 @@ namespace mymuduo{
     }\
     while(0);
 
-    #define ERROR_INFO(logarg,...)\
+    #define LOG_ERROR(logarg,...)\
     do\
     {\
         Logger &logger = Logger::instance();\
         logger.setLogLevel(Logger::LogLevel::ERROR);\
         char buf[1024];\
-        snprintf(buf,1024,loarg,##__VA_ARGS__);\
+        snprintf(buf,1024,logarg,##__VA_ARGS__);\
         logger.log(buf);\
     }\
     while(0);
 
-    #define FATAL_INFO(logarg,...)\
+    #define LOG_FATAL(logarg,...)\
     do\
     {\
         Logger &logger = Logger::instance();\
         logger.setLogLevel(Logger::LogLevel::FATAL);\
         char buf[1024];\
-        snprintf(buf,1024,loarg,##__VA_ARGS__);\
+        snprintf(buf,1024,logarg,##__VA_ARGS__);\
         logger.log(buf);\
     }\
     while(0);
