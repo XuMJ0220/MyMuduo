@@ -1,4 +1,5 @@
 #include "Logging.h"
+#include "Timestamp.h"
 
 #include <iostream>
 
@@ -34,6 +35,7 @@ namespace mymuduo{
         default:
             break;
         }
-        std::cout<<"print time"<<" : "<<msg<<std::endl;
+        
+        std::cout<<Timestamp::now().toString()<<" : "<<msg<<std::endl;
     }    
 }
