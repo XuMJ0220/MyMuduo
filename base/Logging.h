@@ -13,7 +13,7 @@ namespace mymuduo{
         Logger &logger = Logger::instance();\
         logger.setLogLevel(Logger::LogLevel::INFO);\
         char buf[1024];\
-        snprintf(buf,1024,loarg,##__VA_ARGS__);\
+        snprintf(buf,1024,logarg,##__VA_ARGS__);\
         logger.log(buf);\
     }\
     while(0);
