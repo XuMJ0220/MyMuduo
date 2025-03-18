@@ -98,14 +98,46 @@ namespace mymuduo{
         }
 
         //epoll_wait在poll里实现
+        //一个线程就只有一个EventLoop，一个EvevtLoop就一个loop
         Timestamp EPollPoller::poll(int timeoutMs,ChannelList* activeChannels){
-            
+            LOG_INFO("func = %s => fd total num: %d",__FUNCTION__,channels_.size());
+
+            //注意这里第二个参数传入时候的技巧可以学一学
+            int numEvents = epoll_wait(epollfd_,&*events_.begin(),static_cast<int>(events_.size()),timeoutMs);
+        
+            int savedErrno = errno;
+            Timestamp now(Timestamp::now());
+
+            if(numEvents > 0){
+                LOG_INFO("%d events happened",numEvents);
+
+                //将内核返回的epoll_event转换为活跃Channel列表，通过Channel::set_revents设置事件类型
+                fillActiveChannels(numEvents,activeChannels);
+                if(size_t(numEvents) == events_.size()){
+                    events_.resize(events_.size()*2);
+                }
+            }
+            else if(numEvents == 0){
+                LOG_INFO("nothing happened");
+            }
+            else{
+                if(savedErrno!=EINTR){
+                    errno = savedErrno;
+                    LOG_ERROR("EPollerPoller::poll()");
+                }
+            }
+            return now;
         }
 
         void EPollPoller::fillActiveChannels(int numEvents,
                                 ChannelList* activeChannels) const
         {
-
+            for(int i =0 ;i < numEvents; i++){
+                //现在的events_里都是都是需要响应的事件
+                Channel* channel = static_cast<Channel*>(events_[i].data.ptr);
+                channel->set_revents(events_[i].events);
+                activeChannels->push_back(channel);
+            }
         }
     }
 }
