@@ -20,14 +20,6 @@ string
 noncopyable.h
 /home/xumj/项目/MyMuduo/base/noncopyable.h
 
-/home/xumj/项目/MyMuduo/base/Timestamp.cc
-Timestamp.h
-/home/xumj/项目/MyMuduo/base/Timestamp.h
-sstream
--
-iomanip
--
-
 /home/xumj/项目/MyMuduo/base/Timestamp.h
 ctime
 -

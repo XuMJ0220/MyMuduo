@@ -6,5 +6,5 @@ CXX_FLAGS = -g -g -fPIC
 
 CXX_DEFINES = -Dmymuduo_EXPORTS
 
-CXX_INCLUDES = -I/home/xumj/项目/MyMuduo/net/../base 
+CXX_INCLUDES = -I/home/xumj/项目/MyMuduo/net/../base -I/home/xumj/项目/MyMuduo/net -I/home/xumj/项目/MyMuduo/net/poller 
 

@@ -169,6 +169,21 @@ InetAddress.s:
 .PHONY : InetAddress.s
 
 # target to build an object file
+Poller.o:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.o
+.PHONY : Poller.o
+
+# target to preprocess a source file
+Poller.i:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.i
+.PHONY : Poller.i
+
+# target to generate assembly for a file
+Poller.s:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/Poller.s
+.PHONY : Poller.s
+
+# target to build an object file
 SocketsOps.o:
 	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/SocketsOps.o
 .PHONY : SocketsOps.o
@@ -182,6 +197,36 @@ SocketsOps.i:
 SocketsOps.s:
 	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/SocketsOps.s
 .PHONY : SocketsOps.s
+
+# target to build an object file
+poller/Defaultpoll.o:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/Defaultpoll.o
+.PHONY : poller/Defaultpoll.o
+
+# target to preprocess a source file
+poller/Defaultpoll.i:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/Defaultpoll.i
+.PHONY : poller/Defaultpoll.i
+
+# target to generate assembly for a file
+poller/Defaultpoll.s:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/Defaultpoll.s
+.PHONY : poller/Defaultpoll.s
+
+# target to build an object file
+poller/EPollPoller.o:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/EPollPoller.o
+.PHONY : poller/EPollPoller.o
+
+# target to preprocess a source file
+poller/EPollPoller.i:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/EPollPoller.i
+.PHONY : poller/EPollPoller.i
+
+# target to generate assembly for a file
+poller/EPollPoller.s:
+	$(MAKE) -f CMakeFiles/mymuduo.dir/build.make CMakeFiles/mymuduo.dir/poller/EPollPoller.s
+.PHONY : poller/EPollPoller.s
 
 # Help Target
 help:
@@ -201,9 +246,18 @@ help:
 	@echo "... InetAddress.o"
 	@echo "... InetAddress.i"
 	@echo "... InetAddress.s"
+	@echo "... Poller.o"
+	@echo "... Poller.i"
+	@echo "... Poller.s"
 	@echo "... SocketsOps.o"
 	@echo "... SocketsOps.i"
 	@echo "... SocketsOps.s"
+	@echo "... poller/Defaultpoll.o"
+	@echo "... poller/Defaultpoll.i"
+	@echo "... poller/Defaultpoll.s"
+	@echo "... poller/EPollPoller.o"
+	@echo "... poller/EPollPoller.i"
+	@echo "... poller/EPollPoller.s"
 .PHONY : help
 
 

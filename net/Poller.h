@@ -24,7 +24,8 @@ namespace mymuduo{
                 //多路IO，可以是epoll或者poll继承重写
                 virtual Timestamp poll(int timeoutMs,ChannelList* activeChannels) = 0;
 
-                
+                //epoll_ctl在这个下面两个里实现，具体通过update实现
+                //updateChannel和removeChanel主要是处理channels_
                 virtual void updateChannel(Channel* channel) = 0;
                 virtual void removeChannel(Channel* channel) = 0;
 
