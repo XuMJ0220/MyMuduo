@@ -31,4 +31,7 @@
 *.out
 *.app
 
-build/*
+./net/build/*
+./base/build/*
+
+build/

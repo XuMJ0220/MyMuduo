@@ -100,8 +100,8 @@ namespace mymuduo{
         //epoll_wait在poll里实现
         //一个线程就只有一个EventLoop，一个EvevtLoop就一个loop
         Timestamp EPollPoller::poll(int timeoutMs,ChannelList* activeChannels){
-            LOG_INFO("func = %s => fd total num: %d",__FUNCTION__,channels_.size());
-
+            LOG_INFO("func = %s => fd total num: %lu",__FUNCTION__,channels_.size());
+            
             //注意这里第二个参数传入时候的技巧可以学一学
             int numEvents = epoll_wait(epollfd_,&*events_.begin(),static_cast<int>(events_.size()),timeoutMs);
         

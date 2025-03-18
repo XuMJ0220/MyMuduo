@@ -1,0 +1,6 @@
+#ifndef MYMUDUO_BASE_THREAD_H
+#define MYMUDUO_BASE_THREAD_H
+
+
+
+#endif // !MYMUDUO_BASE_THREAD_H

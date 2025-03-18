@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
   "../lib/libmymuduo.pdb"
   "../lib/libmymuduo.so"
+  "CMakeFiles/mymuduo.dir/CurrentThread.o"
   "CMakeFiles/mymuduo.dir/Logging.o"
+  "CMakeFiles/mymuduo.dir/Thread.o"
   "CMakeFiles/mymuduo.dir/Timestamp.o"
 )
 

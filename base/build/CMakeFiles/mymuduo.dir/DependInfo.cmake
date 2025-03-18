@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/xumj/项目/MyMuduo/base/CurrentThread.cc" "/home/xumj/项目/MyMuduo/base/build/CMakeFiles/mymuduo.dir/CurrentThread.o"
   "/home/xumj/项目/MyMuduo/base/Logging.cc" "/home/xumj/项目/MyMuduo/base/build/CMakeFiles/mymuduo.dir/Logging.o"
+  "/home/xumj/项目/MyMuduo/base/Thread.cc" "/home/xumj/项目/MyMuduo/base/build/CMakeFiles/mymuduo.dir/Thread.o"
   "/home/xumj/项目/MyMuduo/base/Timestamp.cc" "/home/xumj/项目/MyMuduo/base/build/CMakeFiles/mymuduo.dir/Timestamp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

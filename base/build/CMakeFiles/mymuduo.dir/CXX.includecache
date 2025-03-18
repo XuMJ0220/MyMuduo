@@ -6,27 +6,25 @@
 
 #IncludeRegexTransform: 
 
-/home/xumj/项目/MyMuduo/base/Logging.cc
-Logging.h
-/home/xumj/项目/MyMuduo/base/Logging.h
-Timestamp.h
-/home/xumj/项目/MyMuduo/base/Timestamp.h
-iostream
+/home/xumj/项目/MyMuduo/base/CurrentThread.cc
+CurrentThread.h
+/home/xumj/项目/MyMuduo/base/CurrentThread.h
+
+/home/xumj/项目/MyMuduo/base/CurrentThread.h
+
+/home/xumj/项目/MyMuduo/base/Thread.cc
+Thread.h
+/home/xumj/项目/MyMuduo/base/Thread.h
+CurrentThread.h
+/home/xumj/项目/MyMuduo/base/CurrentThread.h
+sys/types.h
+-
+unistd.h
+-
+sys/syscall.h
+-
+stdio.h
 -
 
-/home/xumj/项目/MyMuduo/base/Logging.h
-string
--
-noncopyable.h
-/home/xumj/项目/MyMuduo/base/noncopyable.h
-
-/home/xumj/项目/MyMuduo/base/Timestamp.h
-ctime
--
-chrono
--
-string
--
-
-/home/xumj/项目/MyMuduo/base/noncopyable.h
+/home/xumj/项目/MyMuduo/base/Thread.h
 
