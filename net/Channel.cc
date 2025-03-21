@@ -35,14 +35,14 @@ namespace mymuduo{
         //最终通过Poller执行epool_ctl操作
         void Channel::update(){
             
-            //loop_->updateChannel(this);
+            loop_->updateChannel(this);
         }
 
         //为了从EventLoop移除当前Channel的事件监听
         //实际调用EventLoop::removeChannel(),通过Poller执行epoll_ctl(EPOLL_CTL_DEL)
-        void Channel::move(){
+        void Channel::remove(){
         
-            //loop_->removeChannel(this);
+            loop_->removeChannel(this);
         }
 
         //fd得到pooler通知以后,处理事件的函数

@@ -90,7 +90,7 @@ namespace mymuduo{
                 EventLoop* ownerLoop(){ return loop_;}
                 //从EventLoop移除当前Channel的事件监听
                 //实际调用EventLoop::removeChannel(),通过Poller执行epoll_ctl(EPOLL_CTL_DEL)
-                void move();
+                void remove();
         };
 
     }

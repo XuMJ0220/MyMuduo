@@ -12,7 +12,7 @@ namespace mymuduo{
             if(::getenv("MUDUO_USE_POLL")){
                 return nullptr;
             }else{
-                return nullptr;
+                return new EPollPoller(loop);
             }
         }
     }
