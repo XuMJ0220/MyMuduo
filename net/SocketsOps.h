@@ -9,7 +9,9 @@ namespace mymuduo{
         namespace socket{
             // 将ip和port转换为sockaddr_in
             void fromIpPort(const char* ip,uint16_t port,sockaddr_in* addr);
-
+            
+            void bindOrDie(int sockfd,const sockaddr_in& addr);
+            void listenOrDie(int sockfd);
         }
 
     }

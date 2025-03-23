@@ -30,6 +30,10 @@ namespace mymuduo{
                 std::string toIpPort();
                 //获得端口
                 uint16_t port();
+                //获取socket的addr
+                const sockaddr_in getSockAddr() const { return addr_;}
+                //设置
+                void setSockAddr(const sockaddr_in& addr) { addr_ = addr;}
         };
 
     }

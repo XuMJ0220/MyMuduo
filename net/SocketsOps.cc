@@ -18,7 +18,19 @@ namespace mymuduo{
                 }
             }
 
-            
+            void bindOrDie(int sockfd,const sockaddr_in& addr){
+                int ret =  ::bind(sockfd,(sockaddr*)&addr,static_cast<socklen_t>(sizeof(sockaddr_in)));
+                if(ret < 0){
+                    LOG_FATAL("sockets::bindOrDie");
+                }
+            }
+
+            void listenOrDie(int sockfd){
+                int ret = ::listen(sockfd,1024);
+                if(ret < 0){
+                    LOG_FATAL("sockets::listenOrDie");
+                }
+            }
         }
     }
 }
