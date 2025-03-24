@@ -31,6 +31,18 @@ namespace mymuduo{
                     LOG_FATAL("sockets::listenOrDie");
                 }
             }
+
+            //创建非阻塞的socket文件描述符,这里只用IPV4的
+            //源码中参数是sa_family_t family，这里由于我们只用IPV4，就不添加了
+            int createNonblockingOrDie(){
+                //SOCK_NONBLOCK让socket非阻塞
+                //SOCK_CLOEXEC在创建 socket 文件描述符时自动设置 close-on-exec 标志位。这意味着当进程执行 exec 系统调用时，该 socket 文件描述符会被自动关闭
+                int sockfd = ::socket(AF_INET,SOCK_STREAM | SOCK_NONBLOCK | SOCK_CLOEXEC,IPPROTO_TCP);
+                if(sockfd<0){
+                    LOG_FATAL("%s:%s:%d sockets::createNonblockingOrDie",__FILE__,__FUNCTION__,__LINE__);
+                }
+                return sockfd;
+            }
         }
     }
 }

@@ -110,7 +110,7 @@ namespace mymuduo{
             uint64_t one = 1;
             ssize_t n = ::read(wakeupFd_,&one,sizeof(one));
             if(n!=sizeof(one)){
-                LOG_ERROR("EventLoop::handleRead() reads %l bytes instead of 8",n);
+                LOG_ERROR("EventLoop::handleRead() reads %lu bytes instead of 8",n);
             }
         }
 
@@ -118,7 +118,7 @@ namespace mymuduo{
             uint64_t one = 1;
             ssize_t n = ::write(wakeupFd_,&one,sizeof(one));
             if(n!=sizeof(one)){
-                LOG_ERROR("EventLoop::wakeup() write %l bytes instead of 8",n);
+                LOG_ERROR("EventLoop::wakeup() write %lu bytes instead of 8",n);
             }
         }
 

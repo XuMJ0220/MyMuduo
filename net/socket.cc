@@ -58,9 +58,9 @@ namespace mymuduo{
             int optval = on ? 1 : 0;
             ::setsockopt(sockfd_,SOL_SOCKET,SO_REUSEADDR,&optval,static_cast<socklen_t>(sizeof(optval)));
         }
-        //这个就不设置了，用上面的setReuseAddr
+        
         void Socket::setReusePort(bool on){
-
+            
         }
         //开启保活机制，定期检查连接是否存活
         void Socket::setKeepAlive(bool on){
