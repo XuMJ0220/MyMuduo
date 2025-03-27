@@ -15,6 +15,10 @@ CMakeFiles/mymuduo.dir/Acceptor.o: ../InetAddress.h
 CMakeFiles/mymuduo.dir/Acceptor.o: ../SocketsOps.h
 CMakeFiles/mymuduo.dir/Acceptor.o: ../socket.h
 
+CMakeFiles/mymuduo.dir/Buffer.o: ../../base/copyable.h
+CMakeFiles/mymuduo.dir/Buffer.o: ../Buffer.cc
+CMakeFiles/mymuduo.dir/Buffer.o: ../Buffer.h
+
 CMakeFiles/mymuduo.dir/Channel.o: ../../base/CurrentThread.h
 CMakeFiles/mymuduo.dir/Channel.o: ../../base/Logging.h
 CMakeFiles/mymuduo.dir/Channel.o: ../../base/Timestamp.h
@@ -65,10 +69,36 @@ CMakeFiles/mymuduo.dir/Poller.o: ../Poller.cc
 CMakeFiles/mymuduo.dir/Poller.o: ../Poller.h
 
 CMakeFiles/mymuduo.dir/SocketsOps.o: ../../base/Logging.h
+CMakeFiles/mymuduo.dir/SocketsOps.o: ../../base/Types.h
 CMakeFiles/mymuduo.dir/SocketsOps.o: ../../base/noncopyable.h
 CMakeFiles/mymuduo.dir/SocketsOps.o: ../Endian.h
 CMakeFiles/mymuduo.dir/SocketsOps.o: ../SocketsOps.cc
 CMakeFiles/mymuduo.dir/SocketsOps.o: ../SocketsOps.h
+
+CMakeFiles/mymuduo.dir/TcpConnection.o: ../../base/Timestamp.h
+CMakeFiles/mymuduo.dir/TcpConnection.o: ../../base/noncopyable.h
+CMakeFiles/mymuduo.dir/TcpConnection.o: ../Callbacks.h
+CMakeFiles/mymuduo.dir/TcpConnection.o: ../TcpConnection.cc
+CMakeFiles/mymuduo.dir/TcpConnection.o: ../TcpConnection.h
+
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/CurrentThread.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/Logging.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/StringPiece.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/Thread.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/Timestamp.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/copyable.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../../base/noncopyable.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../Acceptor.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../Callbacks.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../Channel.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../EventLoop.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../EventLoopThread.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../EventLoopThreadPool.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../InetAddress.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../SocketsOps.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../TcpServer.cc
+CMakeFiles/mymuduo.dir/TcpServer.o: ../TcpServer.h
+CMakeFiles/mymuduo.dir/TcpServer.o: ../socket.h
 
 CMakeFiles/mymuduo.dir/poller/Defaultpoll.o: ../../base/Timestamp.h
 CMakeFiles/mymuduo.dir/poller/Defaultpoll.o: ../../base/noncopyable.h

@@ -58,7 +58,7 @@ namespace mymuduo{
                 }
                 //retriveAllAsString
                 std::string retrieveAllAsString(){
-                    retrieveAsString(readableBytes());
+                    return retrieveAsString(readableBytes());
                 }
                 //retrieveAsString
                 std::string retrieveAsString(size_t len){
@@ -84,7 +84,7 @@ namespace mymuduo{
                     std::copy(data,data+len,beginWrite());
                 }
 
-                const char* beginWrite() {
+                char* beginWrite() {
                     return begin()+writeIndex_;
                 }
 
