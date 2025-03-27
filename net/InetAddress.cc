@@ -28,13 +28,13 @@ namespace mymuduo{
         }
 
         //获得ip字符串
-        std::string InetAddress::toIp(){
+        std::string InetAddress::toIp() const{
             char buf[64] = {0};
             ::inet_ntop(AF_INET,&addr_.sin_addr,buf,sizeof(buf));
             return buf;
         }
         //从网络的大端IP端口转为本地的小端端口IP
-        std::string InetAddress::toIpPort(){
+        std::string InetAddress::toIpPort() const{
             //ip:port
             char buf[64] = {0};
             ::inet_ntop(AF_INET,&addr_.sin_addr,buf,sizeof(buf));
@@ -42,7 +42,7 @@ namespace mymuduo{
             return ipport;
         }
         //获得端口
-        uint16_t InetAddress::port(){
+        uint16_t InetAddress::port() const{
             return ::ntohs(addr_.sin_port);
         }
     }

@@ -20,16 +20,19 @@ namespace mymuduo{
                 //这个构造函数如果第二个参数是flase,则表示是要0.0.0.0 如果是true则表示是要127.0.0.1
                 explicit InetAddress(uint16_t port = 0 ,bool loopbackOnly = false);
                 InetAddress(mymuduo::StringArg ip,uint16_t port);
+                explicit InetAddress(const sockaddr_in& addr)
+                :addr_(addr)
+                {}
 
                 //获得family
                 /// @return 
                 sa_family_t family() const { return addr_.sin_family;}
                 //获得ip字符串
-                std::string toIp();
+                std::string toIp() const;
                 //从网络的大端IP端口转为本地的小端端口IP
-                std::string toIpPort();
+                std::string toIpPort() const;
                 //获得端口
-                uint16_t port();
+                uint16_t port() const;
                 //获取socket的addr
                 const sockaddr_in getSockAddr() const { return addr_;}
                 //设置

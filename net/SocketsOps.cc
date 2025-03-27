@@ -1,6 +1,7 @@
 #include "SocketsOps.h"
 #include "Endian.h"
 #include "Logging.h"
+#include "Types.h"
 
 #include <unistd.h>
 namespace mymuduo{
@@ -42,6 +43,20 @@ namespace mymuduo{
                     LOG_FATAL("%s:%s:%d sockets::createNonblockingOrDie",__FILE__,__FUNCTION__,__LINE__);
                 }
                 return sockfd;
+            }
+
+            //根据sockfd获得对应的ip和端口
+            //这里只处理IPV4
+            sockaddr_in getLocalAddr(int sockfd){
+                sockaddr_in localaddr;
+                memZero(&localaddr,sizeof(localaddr));
+                socklen_t addrlen = static_cast<socklen_t>(sizeof(localaddr));
+
+                //getsockname()是根据传入的fd，然后返回根据这个fd的东西，给到了第二个参数和第三个参数传递出来
+                if(::getsockname(sockfd,(sockaddr*)&localaddr,&addrlen) < 0){
+                    LOG_ERROR("%s:%s:%d sockets::getLocalAddr",__FILE__,__FUNCTION__,__LINE__);
+                }
+                return localaddr;
             }
         }
     }

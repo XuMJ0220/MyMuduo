@@ -35,3 +35,9 @@
 ./base/build/*
 
 build/
+
+net/build
+base/build
+
+net/build/
+base/build/

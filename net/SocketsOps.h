@@ -17,6 +17,7 @@ namespace mymuduo{
             void bindOrDie(int sockfd,const sockaddr_in& addr);
             void listenOrDie(int sockfd);
             
+            sockaddr_in getLocalAddr(int sockfd);
         }
 
     }

@@ -76,6 +76,15 @@ namespace mymuduo{
             //写日志
             void log(std::string msg);
     };
+
+template<typename T>
+T* CheckNotNull(T* ptr){
+    if(ptr==nullptr){
+        LOG_FATAL("%s:%s:%d ptr must not be null",__FILE__,__FUNCTION__,__LINE__);
+    }
+    return ptr;
+}
+
 }
 
 #endif
