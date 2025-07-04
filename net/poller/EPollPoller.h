@@ -40,7 +40,7 @@ namespace mymuduo{
                 //EventList events_ 的初始化大小
                 static const int kInitEventListSize = 16;
                 using EventList = std::vector<epoll_event>;
-                EventList events_;
+                EventList events_;//EPollPoller中的events_数组存放的正是每次调用epoll_wait()后返回的就绪文件描述符(fd)对应的epoll_event结构体。
 
                 void fillActiveChannels(int numEvents,
                                         ChannelList* activeChannels) const;

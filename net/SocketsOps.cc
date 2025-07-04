@@ -1,14 +1,20 @@
 #include "SocketsOps.h"
 #include "Endian.h"
-#include "Logging.h"
+#include "Logger.h"
 #include "Types.h"
 
 #include <unistd.h>
+#include <sys/socket.h>
+#include <sys/uio.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <string.h>
+
 namespace mymuduo{
 
     namespace net{
 
-        namespace socket{
+        namespace sockets{
             // 将ip和port转换为sockaddr_in
             void fromIpPort(const char* ip,uint16_t port,sockaddr_in* addr){
                 addr->sin_family = AF_INET;
@@ -49,7 +55,7 @@ namespace mymuduo{
             //这里只处理IPV4
             sockaddr_in getLocalAddr(int sockfd){
                 sockaddr_in localaddr;
-                memZero(&localaddr,sizeof(localaddr));
+                bzero(&localaddr, sizeof(localaddr));
                 socklen_t addrlen = static_cast<socklen_t>(sizeof(localaddr));
 
                 //getsockname()是根据传入的fd，然后返回根据这个fd的东西，给到了第二个参数和第三个参数传递出来
@@ -57,6 +63,43 @@ namespace mymuduo{
                     LOG_ERROR("%s:%s:%d sockets::getLocalAddr",__FILE__,__FUNCTION__,__LINE__);
                 }
                 return localaddr;
+            }
+
+            // 写数据
+            ssize_t write(int sockfd, const void* buf, size_t count)
+            {
+                return ::write(sockfd, buf, count);
+            }
+            
+            // 获取socket错误
+            int getSocketError(int sockfd)
+            {
+                int optval;
+                socklen_t optlen = static_cast<socklen_t>(sizeof optval);
+                
+                if (::getsockopt(sockfd, SOL_SOCKET, SO_ERROR, &optval, &optlen) < 0)
+                {
+                    return errno;
+                }
+                else
+                {
+                    return optval;
+                }
+            }
+            
+            // 关闭socket的写端
+            void shutdownWrite(int sockfd)
+            {
+                if (::shutdown(sockfd, SHUT_WR) < 0)
+                {
+                    LOG_ERROR("sockets::shutdownWrite");
+                }
+            }
+            
+            // 从socket读取数据
+            ssize_t read(int sockfd, void* buf, size_t count)
+            {
+                return ::read(sockfd, buf, count);
             }
         }
     }

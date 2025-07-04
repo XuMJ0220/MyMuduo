@@ -6,7 +6,7 @@ namespace mymuduo{
 
     namespace net{
 
-        namespace socket{
+        namespace sockets{
             // 将ip和port转换为sockaddr_in
             void fromIpPort(const char* ip,uint16_t port,sockaddr_in* addr);
             
@@ -18,6 +18,18 @@ namespace mymuduo{
             void listenOrDie(int sockfd);
             
             sockaddr_in getLocalAddr(int sockfd);
+
+            // 写数据
+            ssize_t write(int sockfd, const void* buf, size_t count);
+            
+            // 获取socket错误
+            int getSocketError(int sockfd);
+            
+            // 关闭socket的写端
+            void shutdownWrite(int sockfd);
+            
+            // 从socket读取数据
+            ssize_t read(int sockfd, void* buf, size_t count);
         }
 
     }

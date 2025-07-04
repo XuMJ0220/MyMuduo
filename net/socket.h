@@ -17,9 +17,9 @@ namespace mymuduo{
 
                 int fd() const { return sockfd_;}
 
-                //如果地址在使用就终止
+                
                 void bindAddress(const InetAddress& localaddr);
-                //如果地址在使用就终止
+                
                 void listen();
 
                 //non-blocking非阻塞方式

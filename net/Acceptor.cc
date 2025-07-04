@@ -13,7 +13,7 @@ namespace mymuduo{
 
         Acceptor::Acceptor(EventLoop* loop,const InetAddress& listenAddr,bool reuseport)
             : loop_(loop),
-            acceptSocket_(socket::createNonblockingOrDie()),
+            acceptSocket_(sockets::createNonblockingOrDie()),
             acceptChannel_(loop,acceptSocket_.fd()),
             listening_(false)
         {

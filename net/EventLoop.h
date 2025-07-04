@@ -89,6 +89,18 @@ namespace mymuduo{
                     return threadId_ == CurrentThread::tid();
                 }
 
+                // 断言当前线程是否是创建EventLoop的线程
+                void assertInLoopThread()
+                {
+                    if (!isInLoopThread())
+                    {
+                        abortNotInLoopThread();
+                    }
+                }
+
+                // 当断言失败时调用
+                void abortNotInLoopThread();
+
                 bool eventHandling() const
                 {
                     return eventHandling_;

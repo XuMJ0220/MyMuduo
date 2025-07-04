@@ -2,10 +2,11 @@
 #include "SocketsOps.h"
 #include "InetAddress.h"
 #include "Types.h"
-#include "Logging.h"
+#include "Logger.h"
 
 #include <unistd.h>
 #include <netinet/tcp.h>
+#include <string.h>
 
 namespace mymuduo{
 
@@ -15,14 +16,12 @@ namespace mymuduo{
             ::close(sockfd_);
         }
 
-        //如果地址在使用就终止
         void Socket::bindAddress(const InetAddress& localaddr){
-            socket::bindOrDie(sockfd_,localaddr.getSockAddr());
+            sockets::bindOrDie(sockfd_,localaddr.getSockAddr());
         }
 
-        //如果地址在使用就终止
         void Socket::listen(){
-            socket::listenOrDie(sockfd_);
+            sockets::listenOrDie(sockfd_);
         }
 
         //non-blocking非阻塞方式
@@ -30,11 +29,11 @@ namespace mymuduo{
         //成功返回一个非负整数，且*peeraddr的内容被改变
         int Socket::accept(InetAddress* peeraddr){
             sockaddr_in addr;
-            socklen_t len;
-            memZero(&addr,sizeof(addr));
+            socklen_t len = static_cast<socklen_t>(sizeof(addr));
+            bzero(&addr, sizeof(addr));
 
-            int connfd = ::accept(sockfd_,(sockaddr*)&addr,&len);
-            if(connfd >=0 ){
+            int connfd = ::accept4(sockfd_, (sockaddr*)&addr, &len, SOCK_NONBLOCK | SOCK_CLOEXEC);
+            if(connfd >= 0){
                 peeraddr->setSockAddr(addr);
             }
             return connfd;
@@ -42,9 +41,7 @@ namespace mymuduo{
 
         //关闭写端
         void Socket::shutdownWrite(){
-            if(::shutdown(sockfd_,SHUT_WR)<0){
-                LOG_ERROR("sockets::shutdownWrite");
-            }
+            sockets::shutdownWrite(sockfd_);
         }
 
         //下面几个是使能/失能
@@ -60,7 +57,15 @@ namespace mymuduo{
         }
         
         void Socket::setReusePort(bool on){
-            
+            int optval = on ? 1 : 0;
+            #ifdef SO_REUSEPORT
+            ::setsockopt(sockfd_, SOL_SOCKET, SO_REUSEPORT, &optval, static_cast<socklen_t>(sizeof optval));
+            #else
+            if (on)
+            {
+                LOG_ERROR("SO_REUSEPORT is not supported.");
+            }
+            #endif
         }
         //开启保活机制，定期检查连接是否存活
         void Socket::setKeepAlive(bool on){

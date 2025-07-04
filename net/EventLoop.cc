@@ -1,12 +1,13 @@
 #include "EventLoop.h"
 #include "Poller.h"
 #include "EPollPoller.h"
-#include "Logging.h"
+#include "Logger.h"
 #include "Channel.h"
 
 #include <sys/eventfd.h>
 #include <functional>
 #include <unistd.h>
+#include <assert.h>
 
 namespace mymuduo{
     //每个线程只能有一个EventLoop,t_loopInThisThread指向当前的EventLoop
@@ -60,6 +61,12 @@ namespace mymuduo{
             wakeupChannel_->remove();
             ::close(wakeupFd_);
             t_loopInThisThread = nullptr;
+        }
+
+        void EventLoop::abortNotInLoopThread()
+        {
+            LOG_FATAL("EventLoop::abortNotInLoopThread - EventLoop %p was created in thread %d, current thread is %d",
+                     this, threadId_, CurrentThread::tid());
         }
 
         //启动事件循环，必须在创建EventLoop的线程中调用

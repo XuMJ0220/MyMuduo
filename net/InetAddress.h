@@ -25,7 +25,6 @@ namespace mymuduo{
                 {}
 
                 //获得family
-                /// @return 
                 sa_family_t family() const { return addr_.sin_family;}
                 //获得ip字符串
                 std::string toIp() const;

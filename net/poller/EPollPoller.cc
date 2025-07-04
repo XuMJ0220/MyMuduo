@@ -39,6 +39,10 @@ namespace mymuduo{
         *            /
         *            ----->Poller: ChannelMap<fd,Channel*>     
         */       
+
+       //如果是没有被添加进channels_，那么就添加进来，更新操作肯定就是EPOLL_CTL_ADD
+       //如果是已经添加进channels_，如果不监听任何事件，那么就删除，更新操作肯定就是EPOLL_CTL_DEL
+       //如果是已经添加进channels_，如果监听任何事件，那么就修改，更新操作肯定就是EPOLL_CTL_MOD
         void EPollPoller::updateChannel(Channel* channel){
             const int index = channel->index();
 

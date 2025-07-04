@@ -31,8 +31,8 @@ namespace mymuduo{
             private:
                 EventLoop* loop_;
                 const int fd_;
-                int events_;//注册fd感兴趣的事件类型
-                int revents_;//poller返回的具体发生的事件
+                int events_;
+                int revents_;
                 int index_;
 
                 std::weak_ptr<void> tie_;//避免循环引用
